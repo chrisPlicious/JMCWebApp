@@ -1,0 +1,345 @@
+import {
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+  type ReactNode,
+} from "react";
+import { Phone, Mail, MapPin, Facebook, Send, Clock } from "lucide-react";
+import SectionWrapper from "../ui/SectionWrapper";
+import Button from "../ui/Button";
+
+const systemTypes = [
+  "Hybrid Solar System",
+  "On-Grid / Net-Metered Solar",
+  "Battery Energy Storage (BESS)",
+  "Solar Pumping System",
+  "EV Charger Installation",
+  "UPS System",
+  "Solar Charge Controller",
+  "Not sure — need consultation",
+];
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    city: "",
+    systemType: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    // TODO: Replace with Formspree form ID — e.g., action="https://formspree.io/f/YOUR_FORM_ID"
+    // For now, simulate submission
+    setSubmitted(true);
+  };
+
+  return (
+    <SectionWrapper id="contact" className="bg-white">
+      {/* Header */}
+      <div className="text-center max-w-2xl mx-auto mb-14">
+        <span className="text-solar-600 font-semibold text-sm uppercase tracking-widest mb-4 block">
+          Get Started
+        </span>
+        <h2
+          className="text-navy-900 font-black text-3xl sm:text-4xl lg:text-5xl leading-tight mb-4"
+          style={{ fontFamily: "Poppins, sans-serif" }}
+        >
+          Ready to <span className="text-solar-500">Go Solar?</span>
+        </h2>
+        <p className="text-slate-600 text-lg leading-relaxed">
+          Send us a message and our team will get back to you with a free
+          consultation and system recommendation tailored to your needs.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+        {/* Contact Info (left) */}
+        <div className="lg:col-span-2 flex flex-col gap-8">
+          <div>
+            <h3
+              className="text-navy-900 font-bold text-xl mb-6"
+              style={{ fontFamily: "Poppins, sans-serif" }}
+            >
+              Contact Information
+            </h3>
+            <ul className="space-y-5">
+              <ContactItem icon={<Phone size={18} />} href="tel:+639175088220">
+                0917 508 8220
+              </ContactItem>
+              <ContactItem
+                icon={<Mail size={18} />}
+                href="mailto:jmcsolarph@gmail.com"
+              >
+                jmcsolarph@gmail.com
+              </ContactItem>
+              <ContactItem icon={<MapPin size={18} />}>
+                Lilia Avenue, Cogon,
+                <br />
+                Ormoc City, Leyte 6541
+                <br />
+                Philippines
+              </ContactItem>
+              <ContactItem
+                icon={<Facebook size={18} />}
+                href="https://www.facebook.com/JMCSolarPH"
+                external
+              >
+                JMC Solar PH on Facebook
+              </ContactItem>
+              <ContactItem icon={<Clock size={18} />}>
+                Always Open · We respond within 24 hours
+              </ContactItem>
+            </ul>
+          </div>
+
+          {/* Service Areas Box */}
+          <div className="bg-navy-900 rounded-2xl p-6 text-white">
+            <h4
+              className="font-semibold mb-3"
+              style={{ fontFamily: "Poppins, sans-serif" }}
+            >
+              We Serve
+            </h4>
+            <ul className="text-slate-300 text-sm space-y-1.5">
+              {[
+                "Ormoc City",
+                "Cebu Port Center",
+                "ZBO & Ipil",
+                "Eastern Visayas",
+                "All of Leyte",
+              ].map((area) => (
+                <li key={area} className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-solar-400 flex-shrink-0" />
+                  {area}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Inquiry Form (right) */}
+        <div className="lg:col-span-3">
+          {submitted ? (
+            <div className="bg-green-eco/10 border border-green-eco/30 rounded-3xl p-10 text-center">
+              <div className="w-16 h-16 bg-green-eco/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Send size={28} className="text-green-eco" />
+              </div>
+              <h3
+                className="text-navy-900 font-bold text-2xl mb-2"
+                style={{ fontFamily: "Poppins, sans-serif" }}
+              >
+                Message Sent!
+              </h3>
+              <p className="text-slate-600">
+                Thank you for reaching out. Our team will get back to you within
+                24 hours.
+              </p>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="bg-slate-50 rounded-3xl p-8 border border-slate-200 space-y-5"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <FormField label="Full Name *" htmlFor="name">
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="Juan Dela Cruz"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className={inputClass}
+                  />
+                </FormField>
+                <FormField label="Phone Number *" htmlFor="phone">
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    placeholder="09XX XXX XXXX"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className={inputClass}
+                  />
+                </FormField>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <FormField label="Email Address" htmlFor="email">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="juan@email.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={inputClass}
+                  />
+                </FormField>
+                <FormField label="City / Municipality" htmlFor="city">
+                  <input
+                    id="city"
+                    name="city"
+                    type="text"
+                    placeholder="Ormoc City"
+                    value={formData.city}
+                    onChange={handleChange}
+                    className={inputClass}
+                  />
+                </FormField>
+              </div>
+
+              <FormField label="System Type" htmlFor="systemType">
+                <select
+                  id="systemType"
+                  name="systemType"
+                  value={formData.systemType}
+                  onChange={handleChange}
+                  className={inputClass}
+                >
+                  <option value="">Select a service...</option>
+                  {systemTypes.map((s) => (
+                    <option key={s} value={s}>
+                      {s}
+                    </option>
+                  ))}
+                </select>
+              </FormField>
+
+              <FormField label="Message" htmlFor="message">
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  placeholder="Tell us about your property, current electricity bill, or any questions..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  className={`${inputClass} resize-none`}
+                />
+              </FormField>
+
+              <Button
+                type="submit"
+                variant="primary"
+                size="lg"
+                className="w-full"
+              >
+                <Send size={18} />
+                Send Inquiry
+              </Button>
+
+              <p className="text-slate-400 text-xs text-center">
+                We respect your privacy. Your information will never be shared
+                with third parties.
+              </p>
+            </form>
+          )}
+        </div>
+      </div>
+
+      {/* Map Embed — OpenStreetMap (free, no API key) */}
+      <div className="mt-14">
+        <div className="flex items-center gap-2 mb-4">
+          <MapPin size={18} className="text-solar-500" />
+          <span className="text-navy-900 font-semibold text-sm">
+            Find Us — Lilia Avenue, Cogon, Ormoc City, Leyte 6541
+          </span>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-card">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d788.1558470516892!2d124.60600752736785!3d11.016442895645005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3307f1ac0bb65341%3A0x5a61c31ee45ed6d3!2sJMC%20Solar%20Ormoc!5e1!3m2!1sen!2sph!4v1772197675888!5m2!1sen!2sph"
+            className="w-full h-[70vh] border-0 rounded-lg"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+        <p className="text-slate-400 text-xs mt-2 text-center">
+          Map data ©{" "}
+          <a
+            href="https://www.openstreetmap.org/copyright"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-slate-600"
+          >
+            OpenStreetMap
+          </a>{" "}
+          contributors · Lilia Avenue, Cogon, Ormoc City, Leyte 6541
+        </p>
+      </div>
+    </SectionWrapper>
+  );
+}
+
+const inputClass =
+  "w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-800 text-sm placeholder-slate-400 focus:outline-none focus:border-solar-400 focus:ring-2 focus:ring-solar-400/20 transition-all duration-200";
+
+function FormField({
+  label,
+  htmlFor,
+  children,
+}: {
+  label: string;
+  htmlFor: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label htmlFor={htmlFor} className="text-navy-900 font-medium text-sm">
+        {label}
+      </label>
+      {children}
+    </div>
+  );
+}
+
+function ContactItem({
+  icon,
+  href,
+  external,
+  children,
+}: {
+  icon: ReactNode;
+  href?: string;
+  external?: boolean;
+  children: ReactNode;
+}) {
+  const content = (
+    <div className="flex items-start gap-3">
+      <div className="w-8 h-8 bg-solar-500/10 rounded-lg flex items-center justify-center flex-shrink-0 text-solar-600 mt-0.5">
+        {icon}
+      </div>
+      <span className="text-slate-600 text-sm leading-relaxed">{children}</span>
+    </div>
+  );
+
+  if (href) {
+    return (
+      <li>
+        <a
+          href={href}
+          target={external ? "_blank" : undefined}
+          rel={external ? "noopener noreferrer" : undefined}
+          className="hover:opacity-80 transition-opacity"
+        >
+          {content}
+        </a>
+      </li>
+    );
+  }
+
+  return <li>{content}</li>;
+}
