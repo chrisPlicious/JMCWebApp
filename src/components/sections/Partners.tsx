@@ -3,7 +3,7 @@ import SectionWrapper from '../ui/SectionWrapper';
 export default function Partners() {
 
   return (
-    <SectionWrapper id="partners" >
+    <SectionWrapper id="partners" className="bg-solar-light" >
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-12">
         <span className="text-solar-600 font-semibold text-sm uppercase tracking-widest mb-4 block">

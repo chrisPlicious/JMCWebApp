@@ -100,6 +100,24 @@ body {
   animation-play-state: paused;
 }
 
+@layer utilities {
+  .bg-dots-light{
+    background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .bg-solar-light {
+    background-color: #f8f9fa;
+    background-image: 
+      /* Dots at the intersections (slightly darker gray) */
+      radial-gradient(circle at 0 0, #9ca3af 2.5px, transparent 3px),
+      /* Vertical lines */
+      linear-gradient(to right, #d1d5db 1px, transparent 1px),
+      /* Horizontal lines */
+      linear-gradient(to bottom, #d1d5db 1px, transparent 1px);
+    background-size: 48px 48px; /* Adjust size of the grid blocks here */
+  }
+}
+
 /* ─── Hide scrollbar (gallery carousel) ─────────── */
 .scrollbar-hide {
   scrollbar-width: none;
