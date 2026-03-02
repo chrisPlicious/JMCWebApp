@@ -46,7 +46,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       )}
 
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-colors duration-500" />
 
       {/* Category label — top left */}
       <div className="absolute top-4 left-4 z-10">

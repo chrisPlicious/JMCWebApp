@@ -91,7 +91,7 @@ export default function Navbar() {
               onClick={(e) => handleNavClick(e, item.href)}
               className={`text-md font-medium px-1.5 rounded-lg transition-colors 
                 ${activeSection === item.href
-                  ? 'text-blue-400 active'
+                  ? 'text-sky-500 active'
                   : scrolled
                    ? 'text-blue-950 hover:text-blue-400 hover:bg-white/5'
                    : 'text-white hover:text-blue-400 hover:bg-white/5'
@@ -107,7 +107,7 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, '#contact')}
-            className="bg-solar-500 hover:bg-solar-400 text-navy-900 font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
+            className="bg-navy-800 hover:bg-solar-400 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
           >
             Get a Quote
           </a>

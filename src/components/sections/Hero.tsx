@@ -1,17 +1,52 @@
-import { useEffect, useState } from 'react';
-import solarBg from '../../assets/solar.jpg';
-import { ArrowRight, ChevronDown, Star, Users, Zap } from 'lucide-react';
-import Button from '../ui/Button';
+import { useEffect, useState, useRef } from "react";
+import solarBg from "../../assets/solar.jpg";
+import { ArrowRight, ChevronDown, Star, Users, Zap } from "lucide-react";
+import Button from "../ui/Button";
 
 const stats = [
-  { value: '100%', label: 'Recommend Rate', icon: <Star size={20} /> },
-  { value: '3.3K+', label: 'Facebook Followers', icon: <Users size={20} /> },
-  { value: '6–100kW+', label: 'System Capacities', icon: <Zap size={20} /> },
-  { value: '9+', label: 'Completed Projects', icon: <ArrowRight size={20} /> },
+  { value: "100%", label: "Recommend Rate", icon: <Star size={20} /> },
+  { value: "3.3K+", label: "Facebook Followers", icon: <Users size={20} /> },
+  { value: "6–100kW+", label: "System Capacities", icon: <Zap size={20} /> },
+  { value: "9+", label: "Completed Projects", icon: <ArrowRight size={20} /> },
 ];
+
+const words = ["Electric", "Renewable", "Sustainable", "Now"];
 
 export default function Hero() {
   const [visible, setVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [phase, setPhase] = useState<"typing" | "pause" | "erasing">("typing");
+  const [displayText, setDisplayText] = useState("");
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const word = words[currentIndex];
+
+    if (phase === "typing") {
+      if (displayText.length < word.length) {
+        timeoutRef.current = setTimeout(() => {
+          setDisplayText(word.slice(0, displayText.length + 1));
+        }, 100);
+      } else {
+        timeoutRef.current = setTimeout(() => setPhase("pause"), 80);
+      }
+    } else if (phase === "pause") {
+      timeoutRef.current = setTimeout(() => setPhase("erasing"), 2000);
+    } else if (phase === "erasing") {
+      if (displayText.length > 0) {
+        timeoutRef.current = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1));
+        }, 60);
+      } else {
+        setCurrentIndex((prev) => (prev + 1) % words.length);
+        setPhase("typing");
+      }
+    }
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [displayText, phase, currentIndex]);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 100);
@@ -19,10 +54,10 @@ export default function Hero() {
   }, []);
 
   const scrollToAbout = () => {
-    const el = document.querySelector('#about');
+    const el = document.querySelector("#about");
     if (el) {
       const top = el.getBoundingClientRect().top + window.scrollY - 72;
-      window.scrollTo({ top, behavior: 'smooth' });
+      window.scrollTo({ top, behavior: "smooth" });
     }
   };
 
@@ -32,18 +67,25 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-navy-900"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-cover bg-center opacity-35" style={{ backgroundImage: `url(${solarBg})` }} />
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-35"
+        style={{ backgroundImage: `url(${solarBg})` }}
+      />
       {/* <div className="absolute inset-0 bg-linear-to-b from-white/50 via-navy-900 to-navy-800 opacity-80" /> */}
       <div className="absolute inset-0 " />
       {/* Decorative sun rays */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-10"
-          style={{ background: 'radial-gradient(circle, #f59e0b 0%, transparent 70%)' }}
+          style={{
+            background: "radial-gradient(circle, #f59e0b 0%, transparent 70%)",
+          }}
         />
         <div
           className="absolute bottom-0 -left-20 w-[400px] h-[400px] rounded-full opacity-5"
-          style={{ background: 'radial-gradient(circle, #f59e0b 0%, transparent 70%)' }}
+          style={{
+            background: "radial-gradient(circle, #f59e0b 0%, transparent 70%)",
+          }}
         />
         {/* Grid pattern */}
         <div
@@ -51,15 +93,15 @@ export default function Hero() {
           style={{
             backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
                               linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
+            backgroundSize: "60px 60px",
           }}
         />
       </div>
 
       {/* Main Content */}
       <div
-        className={`relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-1000 ${
-          visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        className={`relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-1000 ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
         {/* Badge */}
@@ -71,22 +113,24 @@ export default function Hero() {
         {/* Headline */}
         <h1
           className="text-white font-black text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-none mb-6"
-          style={{ fontFamily: 'Poppins, sans-serif' }}
+          style={{ fontFamily: "Poppins, sans-serif" }}
         >
-          Future is{' '}
-          <span className="text-solar-400 relative">
-            Electric
-            
+          Future is{" "}
+          <span className="text-solar-400 relative inline-flex items-center">
+            {displayText}
+            {/* Blinking cursor */}
+            <span className="inline-block w-[3px] h-[0.85em] bg-solar-400 ml-1 rounded animate-[blink_0.8s_step-end_infinite]" />
           </span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-slate-300 text-lg sm:text-xl lg:text-2xl max-w-2xl mx-auto mb-4 leading-relaxed">
-          Professional Solar Installation Services in{' '}
+          Professional Solar Installation Services in{" "}
           <span className="text-white font-semibold">Ormoc City, Leyte</span>
         </p>
         <p className="text-slate-400 text-base max-w-xl mx-auto mb-10">
-          From residential rooftops to 100kW+ industrial solar farms — we make clean, free energy accessible for every Filipino.
+          From residential rooftops to 100kW+ industrial solar farms — we make
+          clean, free energy accessible for every Filipino.
         </p>
 
         {/* CTA Buttons */}
@@ -101,13 +145,15 @@ export default function Hero() {
         </div>
 
         {/* Stats Strip */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 max-w-3xl mx-auto">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-solar-400 flex justify-center mb-1">{stat.icon}</div>
+              <div className="text-solar-400 flex justify-center mb-1">
+                {stat.icon}
+              </div>
               <div
                 className="text-white font-black text-2xl lg:text-3xl"
-                style={{ fontFamily: 'Poppins, sans-serif' }}
+                style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 {stat.value}
               </div>
@@ -116,7 +162,6 @@ export default function Hero() {
           ))}
         </div>
       </div>
-
       {/* Scroll Indicator */}
       <button
         onClick={scrollToAbout}
