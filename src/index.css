@@ -101,20 +101,158 @@ body {
 }
 
 @layer utilities {
-  .bg-dots-light{
+  .bg-dots-light {
     background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
     background-size: 20px 20px;
   }
   .bg-solar-light {
-    background-color: #f8f9fa;
-    background-image: 
-      /* Dots at the intersections (slightly darker gray) */
-      radial-gradient(circle at 0 0, #9ca3af 2.5px, transparent 3px),
+    background-color: #ffffff;
+    background-image:
+    /* Circle at each intersection — masks the grid lines to create rounded cell corners */
+      radial-gradient(circle at 0 0, #f8f9fa 5px, transparent 4px),
       /* Vertical lines */
-      linear-gradient(to right, #d1d5db 1px, transparent 1px),
+        linear-gradient(to right, rgba(13, 13, 94, 0.15) 1px, transparent 1px),
       /* Horizontal lines */
-      linear-gradient(to bottom, #d1d5db 1px, transparent 1px);
-    background-size: 48px 48px; /* Adjust size of the grid blocks here */
+        linear-gradient(to bottom, rgba(13, 13, 94, 0.15) 1px, transparent 1px);
+    background-size: 100px 50px;
+  }
+
+  .solar-panel-bg {
+    /* Adjust to fit your layout */
+    width: 100%;
+    min-height: 100vh;
+
+    /* The metallic aluminum frame around the whole panel */
+    border: 6px solid #cbd5e1;
+    border-radius: 1px;
+    box-shadow:
+      inset 0 0 20px rgba(0, 0, 0, 0.5),
+      /* Inner shadow for depth */ 0 10px 15px rgba(0, 0, 0, 0.2); /* Outer drop shadow */
+
+    /* The base deep blue of the solar cells */
+    background-color: #ffffff;
+
+    background-image:
+    /* 1. Chamfered Corners (The white dots/diamonds at the intersections) */
+      radial-gradient(
+        circle at 0 0,
+        rgba(229, 231, 235, 0.3) 5px,
+        transparent 6px
+      ),
+      radial-gradient(
+        circle at 100% 0,
+        rgba(229, 231, 235, 0.3) 5px,
+        transparent 6px
+      ),
+      radial-gradient(
+        circle at 0 100%,
+        rgba(229, 231, 235, 0.3) 5px,
+        transparent 6px
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        rgba(229, 231, 235, 0.3) 5px,
+        transparent 6px
+      ),
+      /* 2. Grid lines (The white gaps between the cells) */
+        linear-gradient(
+          180deg,
+          rgba(229, 231, 235, 0.5) 2px,
+          /* Replaced #e5e7eb */ transparent 2px,
+          transparent 118px,
+          rgba(229, 231, 235, 0.5) 118px /* Replaced #e5e7eb */
+        ),
+      linear-gradient(
+        90deg,
+        rgba(229, 231, 235, 0.5) 2px,
+        /* Replaced #e5e7eb */ transparent 2px,
+        transparent 78px,
+        rgba(229, 231, 235, 0.5) 78px /* Replaced #e5e7eb */
+      ),
+      /* 3. The Busbars (The two vertical silver strips inside each cell) */
+        linear-gradient(
+          90deg,
+          transparent 26px,
+          rgba(255, 255, 255, 0.08) 26px,
+          rgba(13, 13, 94, 0.08) 28px,
+          transparent 28px,
+          transparent 52px,
+          rgba(255, 255, 255, 0.08) 52px,
+          rgba(13, 13, 94, 0.08) 54px,
+          transparent 54px
+        );
+
+    /* Sets the physical size of one repeating solar cell */
+    background-size: 80px 120px;
+  }
+
+  .solar-panel-bg-blue {
+    /* Adjust to fit your layout */
+    width: 100%;
+    min-height: 100vh;
+
+    /* The metallic aluminum frame around the whole panel */
+    border: 6px solid rgba(203, 213, 225, 1); /* Was #cbd5e1 */
+    border-radius: 8px;
+    box-shadow:
+      inset 0 0 20px rgba(0, 0, 0, 0.5),
+      /* Inner shadow for depth */ 0 10px 15px rgba(0, 0, 0, 0.2); /* Outer drop shadow */
+
+    /* The base deep blue of the solar cells */
+    background-color: rgba(26, 54, 139, 1); /* Was #1a368b */
+
+    background-image:
+    /* 1. Chamfered Corners (The white dots/diamonds at the intersections) */
+      radial-gradient(
+        circle at 0 0,
+        rgba(229, 231, 235, 0.4) 5px,
+        transparent 6px
+      ),
+      radial-gradient(
+        circle at 100% 0,
+        rgba(229, 231, 235, 0.4) 5px,
+        transparent 6px
+      ),
+      radial-gradient(
+        circle at 0 100%,
+        rgba(229, 231, 235, 0.4) 5px,
+        transparent 6px
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        rgba(229, 231, 235, 0.4) 5px,
+        transparent 6px
+      ),
+      /* 2. Grid lines (The white gaps between the cells) */
+        linear-gradient(
+          180deg,
+          rgba(229, 231, 235, 0.4) 2px,
+          transparent 2px,
+          transparent 118px,
+          rgba(229, 231, 235, 0.4) 118px
+        ),
+      linear-gradient(
+        90deg,
+        rgba(229, 231, 235, 0.4) 2px,
+        transparent 2px,
+        transparent 78px,
+        rgba(229, 231, 235, 0.4) 78px
+      ),
+      /* 3. The Busbars (The two vertical silver strips inside each cell) */
+        linear-gradient(
+          90deg,
+          transparent 26px,
+          rgba(255, 255, 255, 0.1) 26px,
+          rgba(255, 255, 255, 0.1) 28px,
+          transparent 28px,
+          transparent 52px,
+          rgba(255, 255, 255, 0.1) 52px,
+          rgba(255, 255, 255, 0.1) 54px,
+          transparent 54px
+        );
+
+    /* Sets the physical size of one repeating solar cell */
+    background-size: 80px 120px;
   }
 }
 

@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Services() {
   return (
-    <SectionWrapper id="services" className="bg-slate-50">
+    <SectionWrapper id="services" className="solar-panel-bg">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-14">
         <span className="text-solar-600 font-semibold text-sm uppercase tracking-widest mb-4 block">

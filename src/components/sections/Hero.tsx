@@ -38,6 +38,7 @@ export default function Hero() {
           setDisplayText(displayText.slice(0, -1));
         }, 60);
       } else {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setCurrentIndex((prev) => (prev + 1) % words.length);
         setPhase("typing");
       }

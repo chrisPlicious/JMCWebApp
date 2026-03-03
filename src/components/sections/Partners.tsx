@@ -3,7 +3,7 @@ import SectionWrapper from '../ui/SectionWrapper';
 export default function Partners() {
 
   return (
-    <SectionWrapper id="partners" className="bg-solar-light" >
+    <SectionWrapper id="partners" className="solar-panel-bg" >
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-12">
         <span className="text-solar-600 font-semibold text-sm uppercase tracking-widest mb-4 block">
@@ -38,7 +38,7 @@ export default function Partners() {
           <img src="/Logos/LVTOPSUN.webp" alt="LVTOPSUN" className="h-25 object-contain" />
         </div>
         <div className="flex flex-col items-center gap-2">
-          <img src="/Logos/VOLTRONICPOWER.png" alt="Voltronic Power" className="h-25 object-contain" />
+          <img src="/Logos/VOLTRONICPOWER.png" alt="Voltronic Power" className="h-35 object-contain" />
           <img src="/Logos/SRNE.png" alt="SRNE Solar" className="h-25 object-contain" />
           <img src="/Logos/JAPAN%20SOLAR.png" alt="Japan Solar" className="h-50 object-contain" />
           <img src="/Logos/THINK POWER.png" alt="Phono Solar" className="h-40 object-contain" />

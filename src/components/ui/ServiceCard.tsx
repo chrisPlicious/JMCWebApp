@@ -1,8 +1,8 @@
-import { type ComponentType } from 'react';
-import * as Icons from 'lucide-react';
-import type { LucideProps } from 'lucide-react';
-import type { Service } from '../../types';
-import Badge from './Badge';
+import { type ComponentType } from "react";
+import * as Icons from "lucide-react";
+import type { LucideProps } from "lucide-react";
+import type { Service } from "../../types";
+import Badge from "./Badge";
 
 interface ServiceCardProps {
   service: Service;
@@ -11,7 +11,9 @@ interface ServiceCardProps {
 type IconName = keyof typeof Icons;
 
 export default function ServiceCard({ service }: ServiceCardProps) {
-  const IconComponent = Icons[service.icon as IconName] as ComponentType<LucideProps> | undefined;
+  const IconComponent = Icons[service.icon as IconName] as
+    | ComponentType<LucideProps>
+    | undefined;
 
   return (
     <div className="group relative bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-slate-100 flex flex-col gap-4">
@@ -28,10 +30,15 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         )}
       </div>
       <div>
-        <h3 className="text-navy-900 font-semibold text-lg mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <h3
+          className="text-navy-900 font-semibold text-lg mb-2"
+          style={{ fontFamily: "Poppins, sans-serif" }}
+        >
           {service.title}
         </h3>
-        <p className="text-slate-600 text-sm leading-relaxed">{service.description}</p>
+        <p className="text-slate-600 text-sm leading-relaxed">
+          {service.description}
+        </p>
       </div>
     </div>
   );
