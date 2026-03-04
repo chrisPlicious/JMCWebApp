@@ -20,7 +20,7 @@ export default function SectionWrapper({
     <section
       ref={ref as RefObject<HTMLElement>}
       id={id}
-      className={`py-20 lg:py-28 transition-all duration-700 ${
+      className={`py-20 transition-all duration-700 ${
         isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       } ${className}`}
     >

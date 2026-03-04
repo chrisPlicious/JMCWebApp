@@ -1,4 +1,5 @@
-import type { Service } from '../types';
+import type { Service, ClientType } from '../types';
+import solarImg from '../assets/solar.jpg';
 
 export const services: Service[] = [
   {
@@ -43,5 +44,40 @@ export const services: Service[] = [
     icon: 'SlidersHorizontal',
     title: 'Solar Charge Controllers',
     description: 'High-efficiency MPPT and PWM solar charge controllers for optimized battery charging and maximum energy harvest from your solar array.',
+  },
+];
+
+export const clientTypes: ClientType[] = [
+  {
+    id: 'residential',
+    icon: 'Home',
+    title: 'Residential',
+    description: 'We bring clean, reliable solar energy to homes — from grid-tied systems to full hybrid setups with battery backup for 24/7 power.',
+    image: solarImg,
+    badge: 'residential',
+  },
+  {
+    id: 'commercial',
+    icon: 'Building2',
+    title: 'Commercial',
+    description: 'Reduce operating costs and meet sustainability goals with commercial-scale solar installations tailored to your business needs.',
+    image: solarImg,
+    badge: 'commercial',
+  },
+  {
+    id: 'agricultural',
+    icon: 'Sprout',
+    title: 'Agricultural',
+    description: 'Power irrigation pumps and farm operations at zero fuel cost using solar pumping and off-grid systems built for the field.',
+    image: solarImg,
+    badge: 'agricultural',
+  },
+  {
+    id: 'industrial',
+    icon: 'Factory',
+    title: 'Industrial',
+    description: 'High-capacity solar solutions for manufacturing plants, warehouses, and industrial facilities that demand uninterrupted power.',
+    image: solarImg,
+    badge: 'industrial',
   },
 ];

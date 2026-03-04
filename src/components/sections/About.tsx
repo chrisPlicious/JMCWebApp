@@ -17,9 +17,9 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="solar-panel-bg ">
+    <section id="about" className="bg-solar-light">
       <div className="grid grid-cols-1 lg:grid-cols-3  items-center ">
-        <div className="col-span-2 py-20 lg:py-28 ">
+        <div className="col-span-2 py-20 lg:py-20 ">
           {/* <h1 className="text-center text-4xl font-bold text-solar-500 mb-10">Who We Are</h1> */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center mx-10 ">
             {/* Text Content */}

@@ -38,3 +38,12 @@ export type NavItem = {
 };
 
 export type ProjectCategory = 'all' | 'residential' | 'commercial' | 'industrial' | 'agricultural';
+
+export interface ClientType {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+  image: string;
+  badge: 'residential' | 'commercial' | 'agricultural' | 'industrial';
+}

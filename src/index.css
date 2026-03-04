@@ -102,8 +102,12 @@ body {
 
 @layer utilities {
   .bg-dots-light {
-    background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
-    background-size: 20px 20px;
+    background-image: radial-gradient(
+      circle,
+      rgba(209, 213, 219, 1) 1px,
+      transparent 1px
+    );
+    background-size: 30px 30px;
   }
   .bg-solar-light {
     background-color: #ffffff;
@@ -111,9 +115,9 @@ body {
     /* Circle at each intersection — masks the grid lines to create rounded cell corners */
       radial-gradient(circle at 0 0, #f8f9fa 5px, transparent 4px),
       /* Vertical lines */
-        linear-gradient(to right, rgba(13, 13, 94, 0.15) 1px, transparent 1px),
+        linear-gradient(to right, rgba(13, 13, 94, 0.09) 1px, transparent 1px),
       /* Horizontal lines */
-        linear-gradient(to bottom, rgba(13, 13, 94, 0.15) 1px, transparent 1px);
+        linear-gradient(to bottom, rgba(13, 13, 94, 0.09) 1px, transparent 1px);
     background-size: 100px 50px;
   }
 
@@ -253,6 +257,122 @@ body {
 
     /* Sets the physical size of one repeating solar cell */
     background-size: 80px 120px;
+  }
+
+  .solar-panel-card-bg {
+    background-color: #1e1b4b;
+    border: 6px solid rgba(203, 213, 225, 1); /* Was #cbd5e1 */
+    border-radius: 8px;
+
+    background-image:
+    /* Chamfered corner dots */
+      radial-gradient(
+        circle at 0 0,
+        rgba(203, 213, 225, 0.3) 2px,
+        transparent 3px
+      ),
+      radial-gradient(
+        circle at 100% 0,
+        rgba(203, 213, 225, 0.3) 2px,
+        transparent 3px
+      ),
+      radial-gradient(
+        circle at 0 100%,
+        rgba(203, 213, 225, 0.3) 2px,
+        transparent 3px
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        rgba(203, 213, 225, 0.3) 2px,
+        transparent 3px
+      ),
+      /* Grid lines */
+        linear-gradient(
+          180deg,
+          rgba(203, 213, 225, 0.15) 1px,
+          transparent 1px,
+          transparent 39px,
+          rgba(203, 213, 225, 0.15) 39px
+        ),
+      linear-gradient(
+        90deg,
+        rgba(203, 213, 225, 0.15) 1px,
+        transparent 1px,
+        transparent 29px,
+        rgba(203, 213, 225, 0.15) 29px
+      ),
+      /* Busbars */
+        linear-gradient(
+          90deg,
+          transparent 9px,
+          rgba(203, 213, 225, 0.1) 9px,
+          rgba(203, 213, 225, 0.1) 10px,
+          transparent 10px,
+          transparent 19px,
+          rgba(203, 213, 225, 0.1) 19px,
+          rgba(203, 213, 225, 0.1) 20px,
+          transparent 20px
+        );
+
+    background-size: 30px 40px;
+  }
+
+  .solar-panel-card-bg-hover {
+    background-color: #ffffff;
+    border: 6px solid rgba(203, 213, 225, 1); /* Was #cbd5e1 */
+    border-radius: 8px;
+
+    background-image:
+    /* Chamfered corner dots */
+      radial-gradient(
+        circle at 0 0,
+        rgba(203, 213, 225, 0.3) 2px,
+        transparent 3px
+      ),
+      radial-gradient(
+        circle at 100% 0,
+        rgba(203, 213, 225, 0.3) 2px,
+        transparent 3px
+      ),
+      radial-gradient(
+        circle at 0 100%,
+        rgba(203, 213, 225, 0.3) 2px,
+        transparent 3px
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        rgba(203, 213, 225, 0.3) 2px,
+        transparent 3px
+      ),
+      /* Grid lines */
+        linear-gradient(
+          180deg,
+          rgba(203, 213, 225, 0.15) 1px,
+          transparent 1px,
+          transparent 39px,
+          rgba(203, 213, 225, 0.15) 39px
+        ),
+      linear-gradient(
+        90deg,
+        rgba(203, 213, 225, 0.15) 1px,
+        transparent 1px,
+        transparent 29px,
+        rgba(203, 213, 225, 0.15) 29px
+      ),
+      /* Busbars */
+        linear-gradient(
+          90deg,
+          transparent 9px,
+          rgba(203, 213, 225, 0.1) 9px,
+          rgba(203, 213, 225, 0.1) 10px,
+          transparent 10px,
+          transparent 19px,
+          rgba(203, 213, 225, 0.1) 19px,
+          rgba(203, 213, 225, 0.1) 20px,
+          transparent 20px
+        );
+
+    background-size: 30px 40px;
   }
 }
 

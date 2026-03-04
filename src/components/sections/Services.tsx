@@ -1,12 +1,13 @@
-import SectionWrapper from '../ui/SectionWrapper';
-import ServiceCard from '../ui/ServiceCard';
-import Button from '../ui/Button';
-import { services } from '../../data/services';
-import { ArrowRight } from 'lucide-react';
+import SectionWrapper from "../ui/SectionWrapper";
+import ServiceCard from "../ui/ServiceCard";
+import WhoWeServeCard from "../ui/WhoWeServeCard";
+import Button from "../ui/Button";
+import { services, clientTypes } from "../../data/services";
+import { ArrowRight } from "lucide-react";
 
 export default function Services() {
   return (
-    <SectionWrapper id="services" className="solar-panel-bg">
+    <SectionWrapper id="services" className="bg-slate-50">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-14">
         <span className="text-solar-600 font-semibold text-sm uppercase tracking-widest mb-4 block">
@@ -14,13 +15,14 @@ export default function Services() {
         </span>
         <h2
           className="text-navy-900 font-black text-3xl sm:text-4xl lg:text-5xl leading-tight mb-4"
-          style={{ fontFamily: 'Poppins, sans-serif' }}
+          style={{ fontFamily: "Poppins, sans-serif" }}
         >
-          Complete Solar{' '}
-          <span className="text-solar-500">Solutions</span>
+          Complete Solar <span className="text-solar-500">Solutions</span>
         </h2>
         <p className="text-slate-600 text-lg leading-relaxed">
-          From the initial consultation to after-sales support — we handle every step of your solar journey for residential, commercial, agricultural, and industrial clients.
+          From the initial consultation to after-sales support — we handle every
+          step of your solar journey for residential, commercial, agricultural,
+          and industrial clients.
         </p>
       </div>
 
@@ -37,6 +39,37 @@ export default function Services() {
           Inquire About a Service
           <ArrowRight size={18} />
         </Button>
+      </div>
+
+      {/* Who We Serve */}
+      <div className="mt-24">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="text-solar-600 font-semibold text-sm uppercase tracking-widest mb-4 block">
+            Who We Serve
+          </span>
+          <h2
+            className="text-navy-900 font-black text-3xl sm:text-4xl lg:text-5xl leading-tight mb-4"
+            style={{ fontFamily: "Poppins, sans-serif" }}
+          >
+            Solar for <span className="text-solar-500">Every Client</span>
+          </h2>
+          <p className="text-slate-600 text-lg leading-relaxed">
+            Whether you're a homeowner, business, farmer, or industrial operator
+            — we have the right solar solution for you.
+          </p>
+        </div>
+
+        {/* Alternating rows */}
+        <div className="flex flex-col gap-16">
+          {clientTypes.map((client, index) => (
+            <WhoWeServeCard
+              key={client.id}
+              client={client}
+              reversed={index % 2 !== 0}
+            />
+          ))}
+        </div>
       </div>
     </SectionWrapper>
   );
