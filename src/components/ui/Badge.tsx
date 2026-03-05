@@ -28,7 +28,7 @@ export default function Badge({ children, variant = 'gray', className = '' }: Ba
   const resolvedVariant = categoryMap[variant] ?? variant;
   return (
     <span
-      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide ${variantClasses[resolvedVariant]} ${className}`}
+      className={`inline-flex items-center px-3 py-1 rounded-full text-md font-semibold uppercase tracking-wide ${variantClasses[resolvedVariant]} ${className}`}
     >
       {children}
     </span>

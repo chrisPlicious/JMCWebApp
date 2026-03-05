@@ -39,7 +39,7 @@ export default function WhoWeServeCard({
         <img
           src={client.image}
           alt={client.title}
-          className="w-full h-64 sm:h-72 object-cover"
+          className="w-full h-64 sm:h-180 object-cover"
         />
       </div>
 
@@ -47,19 +47,19 @@ export default function WhoWeServeCard({
       <div className="flex flex-col gap-4 w-full sm:w-3/5">
         <Badge variant={client.badge}>{client.title}</Badge>
         <h3
-          className="text-navy-900 font-bold text-2xl lg:text-3xl leading-snug"
+          className="text-navy-900 font-bold text-2xl lg:text-5xl leading-snug"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
           {IconComponent && (
             <IconComponent
-              size={22}
+              size={36}
               className="inline-block mr-2 mb-1"
               style={{ color: accentColor }}
             />
           )}
           {client.title} Clients
         </h3>
-        <p className="text-slate-600 text-base leading-relaxed">
+        <p className="text-slate-600 text-xl leading-relaxed">
           {client.description}
         </p>
         {/* Accent underline */}

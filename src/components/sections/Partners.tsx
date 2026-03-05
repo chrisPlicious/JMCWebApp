@@ -1,5 +1,31 @@
 import SectionWrapper from '../ui/SectionWrapper';
 
+const partners = [
+  { name: 'Sofar Solar',     logo: '/Logos/SOFARSOLAR.png' },
+  { name: 'Solax Power',     logo: '/Logos/SOLAX.png' },
+  { name: 'JinKO Solar',     logo: '/Logos/JINKOSOLAR.png' },
+  { name: 'Trina Solar',     logo: '/Logos/TRINASOLAR.png' },
+  { name: 'Sunri',           logo: '/Logos/SUNRI.png' },
+  { name: 'REC Group',       logo: '/Logos/REC.png' },
+  { name: 'Deye',            logo: '/Logos/DEYE.png' },
+  { name: 'Livoltek',        logo: '/Logos/LIVOLTEK.png' },
+  { name: 'LVTOPSUN',        logo: '/Logos/LVTOPSUN.webp' },
+  { name: 'Voltronic Power', logo: '/Logos/VOLTRONICPOWER.png' },
+  { name: 'SRNE Solar',      logo: '/Logos/SRNE.png' },
+  { name: 'Japan Solar',     logo: '/Logos/JAPAN%20SOLAR.png' },
+  { name: 'Think Power',     logo: '/Logos/THINK POWER.png' },
+];
+
+const doubled = [...partners, ...partners];
+
+function PartnerCard({ name, logo }: { name: string; logo: string }) {
+  return (
+    <div className="flex items-center justify-center bg-white rounded-xl shadow-sm px-6 py-4 min-w-[140px]">
+      <img src={logo} alt={name} className="h-12 object-contain" />
+    </div>
+  );
+}
+
 export default function Partners() {
 
   return (
@@ -22,7 +48,7 @@ export default function Partners() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="hidden lg:grid grid-cols-3 gap-6">
         <div className="flex flex-col items-center gap-6">
           <img src="/Logos/SOFARSOLAR.png" alt="Sofar Solar" className="h-25 object-contain" />
           <img src="/Logos/SOLAX.png" alt="Solax Power" className="h-25 object-contain" />
@@ -48,13 +74,13 @@ export default function Partners() {
       </div>
 
       {/* Marquee — mobile & tablet */}
-      {/* <div className="lg:hidden overflow-hidden relative mb-6">
+      <div className="lg:hidden overflow-hidden relative mb-6">
         <div className="flex gap-4 animate-marquee" style={{ width: 'max-content' }}>
           {doubled.map((partner, idx) => (
             <PartnerCard key={`${partner.name}-${idx}`} name={partner.name} logo={partner.logo} />
           ))}
         </div>
-      </div> */}
+      </div>
 
 
       {/* Trust note */}
