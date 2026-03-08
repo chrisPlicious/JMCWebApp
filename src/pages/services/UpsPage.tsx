@@ -3,6 +3,7 @@ import ServicePageLayout from '../../components/ui/ServicePageLayout';
 export default function UpsPage() {
   return (
     <ServicePageLayout
+      serviceId="ups"
       title="UPS Systems"
       tagline="Protect your equipment and keep critical operations running through every power interruption."
       heroGradient="from-indigo-800 via-indigo-600 to-purple-500"

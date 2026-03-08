@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import solarBg from "../../assets/solar.jpg";
 import { ArrowRight, ChevronDown, Star, Users, Zap } from "lucide-react";
-import Button from "../ui/Button";
+import Button from "../../components/ui/Button";
 
 const stats = [
   { value: "100%", label: "Recommend Rate", icon: <Star size={20} /> },
@@ -72,7 +72,6 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center opacity-35"
         style={{ backgroundImage: `url(${solarBg})` }}
       />
-      {/* <div className="absolute inset-0 bg-linear-to-b from-white/50 via-navy-900 to-navy-800 opacity-80" /> */}
       <div className="absolute inset-0 " />
       {/* Decorative sun rays */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -106,18 +105,18 @@ export default function Hero() {
         }`}
       >
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-solar-500/10 border border-solar-500/30 text-solar-400 text-sm font-semibold px-4 py-2 rounded-full mb-8">
+        {/* <div className="inline-flex items-center gap-2 bg-solar-500/10 border border-solar-500/30 text-solar-400 text-sm font-semibold px-4 py-2 rounded-full mb-8">
           <Zap size={14} fill="currentColor" />
           Renewable Energy Advocates · Ormoc City, Leyte
-        </div>
+        </div> */}
 
         {/* Headline */}
         <h1
-          className="text-white font-black text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-none mb-6"
+          className="text-white font-black text-5xl sm:text-6xl lg:text-7xl xl:text-8xl mt-10 leading-none mb-6"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
           Future is{" "}
-          <span className="text-solar-400 relative inline-flex items-center">
+          <span className="block text-solar-400 relative sm:inline-flex items-center">
             {displayText}
             {/* Blinking cursor */}
             <span className="inline-block w-[3px] h-[0.85em] bg-solar-400 ml-1 rounded animate-[blink_0.8s_step-end_infinite]" />
@@ -136,11 +135,11 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <Button variant="primary" size="lg" href="#contact">
+          <Button variant="primary" size="lg" href="/#contact">
             Get a Free Quote
             <ArrowRight size={18} />
           </Button>
-          <Button variant="outline" size="lg" href="#projects">
+          <Button variant="outline" size="lg" href="/projects">
             View Our Projects
           </Button>
         </div>

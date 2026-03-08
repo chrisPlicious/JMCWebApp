@@ -1,6 +1,6 @@
 import { CheckCircle2, Leaf, Award, Zap } from "lucide-react";
-import StatCounter from "../ui/StatCounter";
-import Button from "../ui/Button";
+import StatCounter from "../../components/ui/StatCounter";
+import Button from "../../components/ui/Button";
 
 const highlights = [
   "DOE/ERC compliant solar installations",
@@ -18,10 +18,9 @@ const stats = [
 export default function About() {
   return (
     <section id="about" className="bg-solar-light">
-      <div className="grid grid-cols-1 lg:grid-cols-3  items-center ">
-        <div className="col-span-2 py-20 lg:py-20 ">
-          {/* <h1 className="text-center text-4xl font-bold text-solar-500 mb-10">Who We Are</h1> */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center mx-10 ">
+      <div className="grid grid-cols-1 lg:grid-cols-3 items-center">
+        <div className="col-span-2 py-12 lg:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center px-4 sm:px-6 lg:px-10">
             {/* Text Content */}
             <div className="bg-white/60 shadow-2xl rounded-2xl p-6">
               <span className="text-solar-600 font-semibold text-sm uppercase tracking-widest mb-4 block">
@@ -63,7 +62,7 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-              <Button variant="secondary" size="md" href="#contact">
+              <Button variant="secondary" size="md" href="/#contact">
                 Get in Touch
               </Button>
             </div>
@@ -136,7 +135,7 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="relative h-full min-h-125">
+        <div className="relative h-full min-h-[250px] hidden lg:block">
           <img
             src="/public/aboutSolar.jpg"
             alt="JMC Solar Team at Work"

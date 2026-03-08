@@ -3,6 +3,7 @@ import ServicePageLayout from '../../components/ui/ServicePageLayout';
 export default function EvPage() {
   return (
     <ServicePageLayout
+      serviceId="ev"
       title="EV Charger Installation"
       tagline="Charge your electric vehicle at home using clean solar energy — for almost nothing per kilometer."
       heroGradient="from-teal-700 via-teal-500 to-cyan-400"
