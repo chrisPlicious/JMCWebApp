@@ -3,6 +3,7 @@ import ServicePageLayout from '../../components/ui/ServicePageLayout';
 export default function ControllerPage() {
   return (
     <ServicePageLayout
+      serviceId="controller"
       title="Solar Charge Controllers"
       tagline="The intelligent regulator that protects your batteries and maximizes the energy harvested from your solar array."
       heroGradient="from-slate-700 via-slate-600 to-navy-500"

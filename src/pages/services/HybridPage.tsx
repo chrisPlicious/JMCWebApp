@@ -3,6 +3,7 @@ import ServicePageLayout from '../../components/ui/ServicePageLayout';
 export default function HybridPage() {
   return (
     <ServicePageLayout
+      serviceId="hybrid"
       title="Hybrid Solar Systems"
       tagline="The best of both worlds — solar power, battery backup, and grid connection in one unified system."
       heroGradient="from-navy-900 via-navy-800 to-solar-600"

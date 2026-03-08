@@ -30,7 +30,7 @@ export default function WhoWeServeCard({
 
   return (
     <div
-      className={`flex flex-col sm:flex-row items-center gap-10 lg:gap-16 ${
+      className={`flex flex-col sm:flex-row items-center gap-6 sm:gap-10 lg:gap-16 ${
         reversed ? "sm:flex-row-reverse" : ""
       }`}
     >
@@ -47,7 +47,7 @@ export default function WhoWeServeCard({
       <div className="flex flex-col gap-4 w-full sm:w-3/5">
         <Badge variant={client.badge}>{client.title}</Badge>
         <h3
-          className="text-navy-900 font-bold text-2xl lg:text-5xl leading-snug"
+          className="text-navy-900 font-bold text-2xl sm:text-3xl lg:text-5xl leading-snug"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
           {IconComponent && (
@@ -59,7 +59,7 @@ export default function WhoWeServeCard({
           )}
           {client.title} Clients
         </h3>
-        <p className="text-slate-600 text-xl leading-relaxed">
+        <p className="text-slate-600 text-base sm:text-xl leading-relaxed">
           {client.description}
         </p>
         {/* Accent underline */}

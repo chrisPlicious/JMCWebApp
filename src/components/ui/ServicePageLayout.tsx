@@ -25,6 +25,7 @@ export interface ServicePageProps {
   tagline: string;
   heroGradient: string;
   iconName: string;
+  serviceId?: string;
   overview: string;
   whatIsIt: string;
   howItWorks: { step: string; description: string }[];
@@ -39,6 +40,7 @@ export default function ServicePageLayout({
   tagline,
   heroGradient,
   iconName,
+  serviceId,
   overview,
   whatIsIt,
   howItWorks,
@@ -55,7 +57,7 @@ export default function ServicePageLayout({
           <div className="flex items-center gap-2 text-white/60 text-sm mb-8">
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <span>/</span>
-            <Link to="/#services" className="hover:text-white transition-colors">Services</Link>
+            <Link to="/services" className="hover:text-white transition-colors">Services</Link>
             <span>/</span>
             <span className="text-white">{title}</span>
           </div>
@@ -72,9 +74,9 @@ export default function ServicePageLayout({
           >
             {title}
           </h1>
-          <p className="text-white/80 text-xl leading-relaxed max-w-3xl mb-8">{tagline}</p>
+          <p className="text-white/80 text-base sm:text-xl leading-relaxed max-w-3xl mb-8">{tagline}</p>
           <Link
-            to="/#contact"
+            to={serviceId ? `/?service=${serviceId}#contact` : '/#contact'}
             className="inline-flex items-center gap-2 bg-solar-500 hover:bg-solar-400 text-white font-bold px-7 py-3.5 rounded-xl transition-colors duration-200 text-base"
           >
             Get a Free Quote <Icon name="ArrowRight" size={18} />
@@ -165,10 +167,10 @@ export default function ServicePageLayout({
               <tbody>
                 {specs.map((spec, i) => (
                   <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
-                    <td className="px-6 py-3.5 font-semibold text-navy-900 w-2/5 border-r border-slate-100">
+                    <td className="px-3 sm:px-6 py-3 font-semibold text-navy-900 w-2/5 border-r border-slate-100 text-sm sm:text-base">
                       {spec.label}
                     </td>
-                    <td className="px-6 py-3.5 text-slate-600">{spec.value}</td>
+                    <td className="px-3 sm:px-6 py-3 text-slate-600 text-sm sm:text-base">{spec.value}</td>
                   </tr>
                 ))}
               </tbody>
@@ -177,7 +179,7 @@ export default function ServicePageLayout({
         </section>
 
         {/* ── CTA Strip ── */}
-        <section className="bg-navy-900 rounded-3xl px-8 py-12 text-center">
+        <section className="bg-navy-900 rounded-3xl px-5 py-8 sm:px-8 sm:py-12 text-center">
           <h2
             className="text-white font-black text-2xl sm:text-3xl mb-3"
             style={{ fontFamily: 'Poppins, sans-serif' }}
@@ -189,13 +191,13 @@ export default function ServicePageLayout({
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              to="/#contact"
+              to={serviceId ? `/?service=${serviceId}#contact` : '/#contact'}
               className="inline-flex items-center gap-2 bg-solar-500 hover:bg-solar-400 text-white font-bold px-7 py-3.5 rounded-xl transition-colors duration-200"
             >
               Contact JMC Solar PH <Icon name="ArrowRight" size={18} />
             </Link>
             <Link
-              to="/#services"
+              to="/services"
               className="inline-flex items-center gap-2 text-white/70 hover:text-white font-semibold transition-colors duration-200"
             >
               <ArrowLeft size={16} /> View all services

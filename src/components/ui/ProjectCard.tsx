@@ -31,7 +31,7 @@ const categoryLabels: Record<Project['category'], string> = {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="relative flex-shrink-0 w-full h-[420px] md:w-[1000px] md:h-[680px] rounded-2xl overflow-hidden transition-transform hover:scale-101 duration-300 ease-in-out select-none">
+    <div className="relative flex-shrink-0 w-[88vw] h-[300px] sm:w-[560px] sm:h-[400px] md:w-[800px] md:h-[560px] lg:w-[1000px] lg:h-[680px] rounded-2xl overflow-hidden transition-transform hover:scale-101 duration-300 ease-in-out select-none">
 
       {/* Background: image if available, gradient fallback */}
       {project.image ? (
@@ -64,7 +64,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           className="absolute top-4 right-4 z-10 inline-flex items-center justify-center bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/40 transition-colors duration-200"
           onClick={(e) => e.stopPropagation()}
         >
-          <ExternalLink size={28} />
+          <ExternalLink size={18} />
         </a>
       )}
 
@@ -85,12 +85,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </h3>
         <div className="flex items-center gap-3 text-white/80 text-sm">
           <span className="flex items-center gap-1">
-            <Zap size={20} className="text-solar-400" />
+            <Zap size={15} className="text-solar-400" />
             {project.systemSize}
           </span>
           {project.location && (
             <span className="flex items-center gap-1">
-              <MapPin size={20} />
+              <MapPin size={15} />
               {project.location}
             </span>
           )}

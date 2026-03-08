@@ -3,6 +3,7 @@ import ServicePageLayout from '../../components/ui/ServicePageLayout';
 export default function BessPage() {
   return (
     <ServicePageLayout
+      serviceId="bess"
       title="Battery Energy Storage (BESS)"
       tagline="Never lose power again — store solar energy and stay powered through any outage, day or night."
       heroGradient="from-blue-800 via-blue-600 to-blue-400"

@@ -3,6 +3,7 @@ import ServicePageLayout from '../../components/ui/ServicePageLayout';
 export default function PumpPage() {
   return (
     <ServicePageLayout
+      serviceId="pump"
       title="Solar Pumping Systems"
       tagline="Power your irrigation and water supply with the sun — zero fuel, zero electricity bill."
       heroGradient="from-green-800 via-green-600 to-green-400"

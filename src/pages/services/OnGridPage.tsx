@@ -3,6 +3,7 @@ import ServicePageLayout from '../../components/ui/ServicePageLayout';
 export default function OnGridPage() {
   return (
     <ServicePageLayout
+      serviceId="ongrid"
       title="On-Grid / Net-Metered Solar"
       tagline="Feed the grid, earn credits, and slash your electricity bill — the simplest and most affordable solar option."
       heroGradient="from-yellow-600 via-solar-500 to-solar-400"
