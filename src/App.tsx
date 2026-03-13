@@ -2,8 +2,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import HomePage from './pages/home/HomePage';
-import ServicesPage from './pages/services';
-import ProjectsPage from './pages/projects';
+import ServicesPage from './pages/services/ServiceIndex';
+import ProjectsPage from './pages/projects/ProjectIndex';
 import HybridPage from './pages/services/HybridPage';
 import OnGridPage from './pages/services/OnGridPage';
 import BessPage from './pages/services/BessPage';
@@ -11,7 +11,7 @@ import PumpPage from './pages/services/PumpPage';
 import EvPage from './pages/services/EvPage';
 import UpsPage from './pages/services/UpsPage';
 import ControllerPage from './pages/services/ControllerPage';
-import ProductsPage from './pages/products';
+import ProductsPage from './pages/products/ProductsIndex';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();

@@ -6,7 +6,7 @@ export default function OnGridPage() {
       serviceId="ongrid"
       title="On-Grid / Net-Metered Solar"
       tagline="Feed the grid, earn credits, and slash your electricity bill — the simplest and most affordable solar option."
-      heroGradient="from-yellow-600 via-solar-500 to-solar-400"
+      heroGradient="from-solar-600 via-navy-800 to-navy-900"
       iconName="Zap"
       overview="An on-grid (grid-tied) solar system connects your solar panels directly to the utility grid without batteries. During the day, solar powers your home and any surplus is exported to the grid for credits. It is the most cost-effective solar installation because it removes the battery expense while still delivering significant monthly savings."
       whatIsIt="An on-grid solar system consists of solar panels wired to a grid-tied inverter, which converts DC electricity to grid-synchronized AC power. When your panels produce more electricity than you consume, the excess flows backward through your meter to the utility grid — a process called net metering. Under Philippine law (RA 9513 and ERC Net Metering Rules), distribution utilities like VECO are required to accept this surplus and credit you at the blended generation rate. At night or on cloudy days, you draw normally from the grid. There are no batteries, making this the simplest and lowest-cost solar option available."
