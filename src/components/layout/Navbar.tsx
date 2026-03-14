@@ -163,12 +163,14 @@ export default function Navbar() {
           >
             Get a Quote
           </Link> */}
-          <Link
-            to="/#contact"
-            className="font-bold text-sm px-5 py-2.5 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg bg-navy-800 text-white hover:bg-navy-700"      
-          >
-            Get a Quote
-          </Link>
+          <a href="/#contact">
+            <button
+            
+              className="font-bold text-sm px-5 py-2.5 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg bg-navy-800 text-white hover:bg-navy-700"
+            >
+              Get a Quote
+            </button>
+          </a>
         </div>
 
         {/* Mobile Hamburger */}

@@ -2,6 +2,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --font-montserrat: "Montserrat", ui-sans-serif, system-ui, sans-serif;
 }
@@ -95,6 +99,101 @@ body {
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* ─── Send Button (uiverse fly animation) ───────── */
+
+@keyframes sendFly {
+  from { transform: translateY(0.1em); }
+  to   { transform: translateY(-0.1em); }
+}
+
+/* Only animate when NOT disabled (i.e. not submitting) */
+.send-btn:not([disabled]):hover .send-fly {
+  animation: sendFly 0.6s ease-in-out infinite alternate;
+}
+.send-btn:not([disabled]):hover .send-icon {
+  transform: translateX(1.2em) rotate(45deg) scale(1.7);
+}
+.send-btn:not([disabled]):hover .send-text {
+  transform: translateX(2em);
+}
+.send-btn:not([disabled]):active {
+  transform: scale(0.95);
+}
+
+.send-icon {
+  display: inline-flex;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+.send-text {
+  display: block;
+  margin-left: 0.3em;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* ─── Page Transition Loader ─────────────────────── */
+
+@keyframes solarTileWave {
+  0%, 100% { transform: scale(1);    filter: brightness(1); }
+  50%       { transform: scale(1.1); filter: brightness(1.6) drop-shadow(0 0 4px rgba(100, 180, 255, 0.55)); }
+}
+
+/* ─── Loader Screen (v2) ─────────────────────────── */
+
+@keyframes loaderTileAppear {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes loaderTileWave {
+  0%, 100% { filter: brightness(1); }
+  50%       { filter: brightness(2.2) drop-shadow(0 0 6px rgba(126, 200, 240, 0.8)); }
+}
+
+@keyframes loaderRingPulse {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.03); }
+}
+
+@keyframes loaderBrandIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loaderProgressGrow {
+  0%   { width: 0%; }
+  15%  { width: 20%; }
+  40%  { width: 50%; }
+  70%  { width: 78%; }
+  90%  { width: 95%; }
+  100% { width: 100%; }
+}
+
+.loader-v2-ring-1 {
+  border: 1px solid rgba(126, 200, 240, 0.04);
+  animation: loaderRingPulse 4s ease-in-out infinite;
+}
+
+.loader-v2-ring-2 {
+  border: 1px solid rgba(126, 200, 240, 0.02);
+  animation: loaderRingPulse 4s 1s ease-in-out infinite;
+}
+
+.loader-v2-brand {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: loaderBrandIn 0.7s 0.8s ease-out forwards;
+}
+
+.loader-v2-progress-row {
+  opacity: 0;
+  animation: loaderBrandIn 0.5s 1.2s ease-out forwards;
+}
+
+.loader-v2-progress-fill {
+  background: linear-gradient(90deg, #3d6a9e, #7ec8f0);
+  animation: loaderProgressGrow 3.4s ease-in-out forwards;
 }
 
 @layer utilities {

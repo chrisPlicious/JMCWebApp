@@ -54,7 +54,7 @@ export default function Reviews() {
             <div className="border-l border-navy-600 pl-4 flex items-center gap-2">
               <ThumbsUp size={18} className="text-green-eco" />
               <div>
-                <div className="text-white font-bold text-lg">7</div>
+                <div className="text-white font-bold text-lg">10</div>
                 <div className="text-slate-400 text-xs">Reviews</div>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function Reviews() {
         {/* CTA Section */}
         <div className="text-center">
           <a
-            href="https://www.facebook.com/JMCSolarPH"
+            href="https://www.facebook.com/jmcsolar/reviews/?id=100063736463795&sk=reviews"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-slate-400 hover:text-solar-400 transition-colors text-sm"

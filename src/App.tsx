@@ -1,6 +1,9 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
+import LoaderScreen from './components/ui/LoaderScreen';
+import PageTransition from './components/ui/PageTransition';
 import HomePage from './pages/home/HomePage';
 import ServicesPage from './pages/services/ServiceIndex';
 import ProjectsPage from './pages/projects/ProjectIndex';
@@ -20,12 +23,9 @@ function ScrollToTop() {
     if (!hash) {
       window.scrollTo(0, 0);
     } else {
-      // Give the page a tick to render before scrolling to the element
       const id = setTimeout(() => {
         const el = document.querySelector(hash);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
       }, 50);
       return () => clearTimeout(id);
     }
@@ -33,23 +33,33 @@ function ScrollToTop() {
   return null;
 }
 
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/"                   element={<PageTransition><HomePage /></PageTransition>} />
+        <Route path="/services"           element={<PageTransition><ServicesPage /></PageTransition>} />
+        <Route path="/projects"           element={<PageTransition><ProjectsPage /></PageTransition>} />
+        <Route path="/services/hybrid"    element={<PageTransition><HybridPage /></PageTransition>} />
+        <Route path="/services/ongrid"    element={<PageTransition><OnGridPage /></PageTransition>} />
+        <Route path="/services/bess"      element={<PageTransition><BessPage /></PageTransition>} />
+        <Route path="/services/pump"      element={<PageTransition><PumpPage /></PageTransition>} />
+        <Route path="/services/ev"        element={<PageTransition><EvPage /></PageTransition>} />
+        <Route path="/services/ups"       element={<PageTransition><UpsPage /></PageTransition>} />
+        <Route path="/services/controller" element={<PageTransition><ControllerPage /></PageTransition>} />
+        <Route path="/products"           element={<PageTransition><ProductsPage /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
+      <LoaderScreen />
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/services/hybrid" element={<HybridPage />} />
-        <Route path="/services/ongrid" element={<OnGridPage />} />
-        <Route path="/services/bess" element={<BessPage />} />
-        <Route path="/services/pump" element={<PumpPage />} />
-        <Route path="/services/ev" element={<EvPage />} />
-        <Route path="/services/ups" element={<UpsPage />} />
-        <Route path="/services/controller" element={<ControllerPage />} />
-        <Route path="/products" element={<ProductsPage />} />
-      </Routes>
+      <AnimatedRoutes />
     </BrowserRouter>
   );
 }

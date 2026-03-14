@@ -1,9 +1,10 @@
 import {
   useState,
   type ChangeEvent,
-  type FormEvent,
   type ReactNode,
 } from "react";
+import { useForm } from "@formspree/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
 import { products } from "../../data/products";
 import { Phone, Mail, MapPin, Facebook, Send, Clock } from "lucide-react";
@@ -71,19 +72,12 @@ export default function Contact() {
       message,
     };
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [state, handleSubmit] = useForm("mjgaoear");
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    // TODO: Replace with Formspree form ID — e.g., action="https://formspree.io/f/YOUR_FORM_ID"
-    // For now, simulate submission
-    setSubmitted(true);
   };
 
   return (
@@ -141,7 +135,7 @@ export default function Contact() {
                   JMC Solar PH on Facebook
                 </ContactItem>
                 <ContactItem icon={<Clock size={18} />}>
-                  Always Open · We respond within 24 hours
+                  Monday - Friday: 8:00 AM - 5:00 PM
                 </ContactItem>
               </ul>
             </div>
@@ -173,7 +167,7 @@ export default function Contact() {
 
           {/* Inquiry Form (right) */}
           <div className="lg:col-span-3">
-            {submitted ? (
+            {state.succeeded ? (
               <div className="bg-green-eco/10 border border-green-eco/30 rounded-3xl p-6 sm:p-10 text-center">
                 <div className="w-16 h-16 bg-green-eco/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Send size={28} className="text-green-eco" />
@@ -279,10 +273,42 @@ export default function Contact() {
                   type="submit"
                   variant="primary"
                   size="lg"
-                  className="w-full"
+                  className="w-full overflow-hidden send-btn"
+                  disabled={state.submitting}
                 >
-                  <Send size={18} />
-                  Send Inquiry
+                  <AnimatePresence mode="wait" initial={false}>
+                    {state.submitting ? (
+                      /* ── Loading state ── */
+                      <motion.span
+                        key="loading"
+                        className="inline-flex items-center justify-center gap-2"
+                        initial={{ opacity: 0, scale: 0.7 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <motion.span
+                          className="block w-[18px] h-[18px] rounded-full border-2 border-white/40 border-t-white"
+                          animate={{ rotate: 360 }}
+                          transition={{ repeat: Infinity, duration: 0.7, ease: "linear" }}
+                        />
+                        Sending...
+                      </motion.span>
+                    ) : (
+                      /* ── Idle state ── */
+                      <motion.span
+                        key="idle"
+                        className="inline-flex items-center"
+                        exit={{ opacity: 0, transition: { duration: 0.15 } }}
+                      >
+                        <span className="send-fly">
+                          <span className="send-icon">
+                            <Send size={18} />
+                          </span>
+                        </span>
+                        <span className="send-text">Send Inquiry</span>
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                 </Button>
 
                 <p className="text-slate-400 text-xs text-center">

@@ -4,6 +4,7 @@ import * as Icons from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import { ArrowLeft, CheckCircle, ExternalLink } from 'lucide-react';
 import Layout from '../layout/Layout';
+import Button from './Button';
 
 type IconName = keyof typeof Icons;
 
@@ -75,12 +76,12 @@ export default function ServicePageLayout({
             {title}
           </h1>
           <p className="text-white/80 text-base sm:text-xl leading-relaxed max-w-3xl mb-8">{tagline}</p>
-          <Link
-            to={serviceId ? `/?service=${serviceId}#contact` : '/#contact'}
+          <Button
+            href={serviceId ? `/?service=${serviceId}#contact` : '/#contact'}
             className="inline-flex items-center gap-2 bg-solar-500 hover:bg-solar-400 text-white font-bold px-7 py-3.5 rounded-xl transition-colors duration-200 text-base"
           >
             Get a Free Quote <Icon name="ArrowRight" size={18} />
-          </Link>
+          </Button>
         </div>
       </div>
 
